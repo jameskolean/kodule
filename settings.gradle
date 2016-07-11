@@ -1,0 +1,5 @@
+rootProject.name = 'kodule'
+
+include ':kweb'
+
+project(':kweb').projectDir = "$rootDir/kweb" as File

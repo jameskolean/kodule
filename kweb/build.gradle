@@ -1,0 +1,25 @@
+description = 'Web Application portions of Kodule.'
+apply plugin: 'application'
+
+mainClassName = 'com.codegreenllc.kodule.Application'
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+     
+    compile libraries.guava
+    compile libraries.joda
+    
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'com.github.springtestdbunit:spring-test-dbunit:1.2.1'
+    testCompile 'org.dbunit:dbunit:2.4.+'
+    testCompile 'junit:junit:4.9'
+}
+
+bootRun {
+    systemProperty "user.timezone", "UTC"
+//    jvmArgs = [
+//        "-javaagent:../util/lib/springloaded-1.2.6.RELEASE.jar",
+//        "-noverify"
+//    ]
+}
+

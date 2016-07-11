@@ -1,0 +1,62 @@
+allprojects  {
+	group = "codegreenllc"
+	version = 1.0
+	
+	  apply plugin: 'maven'
+
+  repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven{
+      url 'http://repository.codehaus.org/org/codehaus'
+      url 'https://repo.spring.io/libs-milestone'
+    }
+  }
+	
+}
+
+buildscript {
+  repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+    maven{
+      url 'http://repository.codehaus.org/org/codehaus'
+      url 'https://repo.spring.io/libs-milestone'
+    }
+  }
+
+  ext {
+    SPRING_BOOT_VERSION = '1.4.0.RC1'
+
+    libraries = [ 
+      'guava' : 'com.google.guava:guava:18.0',
+      'joda' : 'joda-time:joda-time:2.8.1',
+      'slf4j' : 'org.slf4j:slf4j-api:1.7.12',
+      'commonsLogging' : 'commons-logging:commons-logging:1.2',
+      ]
+  }
+    
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${SPRING_BOOT_VERSION}")
+  }
+
+}
+
+
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'spring-boot'
+  apply plugin: 'eclipse'
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+}
+
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.14'
+}
+
